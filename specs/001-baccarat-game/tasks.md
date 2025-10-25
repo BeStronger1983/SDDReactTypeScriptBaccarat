@@ -58,7 +58,7 @@
 
 ### 工具函式（TDD）
 
-- [ ] T016 [P] **測試**: 洗牌演算法測試 tests/unit/shuffle.test.ts - 驗證 Fisher-Yates 正確性和均勻分布
+- [X] T016 [P] **測試**: 洗牌演算法測試 tests/unit/shuffle.test.ts - 驗證 Fisher-Yates 正確性和均勻分布
 - [ ] T017 [P] **實作**: Fisher-Yates 洗牌演算法 src/utils/shuffle.ts
 - [ ] T018 [P] **測試**: 牌面工具測試 tests/unit/cardUtils.test.ts - 驗證牌值計算、點數總和
 - [ ] T019 [P] **實作**: 牌面工具函式 src/utils/cardUtils.ts（getCardValue, calculateScore）
