@@ -429,8 +429,9 @@ describe('baccaratRules', () => {
 
       it('should handle scenario: player natural, banker not', () => {
         // Player has 9 (natural), banker has 5
+        // Player doesn't draw (natural), so banker follows standard rules
         expect(shouldPlayerDraw(9)).toBe(false);
-        expect(shouldBankerDraw(5, null)).toBe(false); // player did not draw
+        expect(shouldBankerDraw(5, null)).toBe(true); // banker 5, player didn't draw -> banker draws
       });
     });
   });

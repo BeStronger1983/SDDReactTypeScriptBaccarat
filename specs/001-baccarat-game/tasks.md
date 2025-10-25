@@ -68,7 +68,7 @@
 ### 核心遊戲邏輯（TDD）
 
 - [X] T022 [P] **測試**: 百家樂規則測試 tests/unit/baccaratRules.test.ts - 所有補牌規則分支（目標覆蓋率 95%+）
-- [ ] T023 **實作**: 百家樂補牌規則 src/services/baccaratRules.ts（shouldPlayerDraw, shouldBankerDraw）
+- [X] T023 **實作**: 百家樂補牌規則 src/services/baccaratRules.ts（shouldPlayerDraw, shouldBankerDraw）
 - [ ] T024 [P] **測試**: 賠率計算測試 tests/unit/payoutCalculator.test.ts - 三種勝負結果、多區域下注
 - [ ] T025 **實作**: 賠率計算器 src/services/payoutCalculator.ts（calculatePayout, calculateTotalPayout）
 - [ ] T026 [P] **測試**: 牌靴管理測試 tests/unit/cardShoe.test.ts - 初始化、發牌、洗牌觸發
