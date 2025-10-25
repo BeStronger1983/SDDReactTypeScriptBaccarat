@@ -27,7 +27,7 @@
 
 **目的**: 專案初始化和基本結構建立
 
-- [ ] T001 使用 Vite 建立 React + TypeScript 專案 `npm create vite@latest baccarat-game -- --template react-ts`
+- [X] T001 使用 Vite 建立 React + TypeScript 專案 `npm create vite@latest baccarat-game -- --template react-ts`
 - [ ] T002 安裝核心相依套件：react, react-dom, framer-motion
 - [ ] T003 [P] 安裝開發工具：typescript, eslint, prettier, vitest, @testing-library/react, playwright
 - [ ] T004 [P] 配置 TypeScript (tsconfig.json) - 啟用 strict mode 及所有嚴格檢查
