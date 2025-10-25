@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createShoe, dealCard, needsShuffle, getRemainingCards } from '@/services/cardShoe';
-import type { Card, CardShoe } from '@/types/game';
+import type { Card, Shoe } from '@/types/game';
 import { TOTAL_DECKS, CARDS_PER_DECK, TOTAL_CARDS, SHUFFLE_THRESHOLD } from '@/types/game';
 
 describe('cardShoe', () => {
@@ -83,7 +83,7 @@ describe('cardShoe', () => {
     });
 
     describe('Shoe Structure', () => {
-      it('should return a valid CardShoe object', () => {
+      it('should return a valid Shoe object', () => {
         const shoe = createShoe();
         expect(shoe).toHaveProperty('cards');
         expect(shoe).toHaveProperty('dealtCount');
