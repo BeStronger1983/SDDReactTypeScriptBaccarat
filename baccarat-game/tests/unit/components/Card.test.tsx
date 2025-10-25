@@ -50,7 +50,7 @@ describe('Card', () => {
 
     it('should display card rank', () => {
       render(<Card card={{ suit: 'hearts', rank: 'K' }} />);
-      expect(screen.getByText('K')).toBeInTheDocument();
+      expect(screen.getAllByText('K').length).toBeGreaterThan(0);
     });
 
     it('should display card suit symbol', () => {
@@ -114,22 +114,22 @@ describe('Card', () => {
   describe('Suit Symbols', () => {
     it('should display heart symbol (♥)', () => {
       render(<Card card={{ suit: 'hearts', rank: 'A' }} />);
-      expect(screen.getByText('♥')).toBeInTheDocument();
+      expect(screen.getAllByText('♥').length).toBeGreaterThan(0);
     });
 
     it('should display diamond symbol (♦)', () => {
       render(<Card card={{ suit: 'diamonds', rank: 'A' }} />);
-      expect(screen.getByText('♦')).toBeInTheDocument();
+      expect(screen.getAllByText('♦').length).toBeGreaterThan(0);
     });
 
     it('should display club symbol (♣)', () => {
       render(<Card card={{ suit: 'clubs', rank: 'A' }} />);
-      expect(screen.getByText('♣')).toBeInTheDocument();
+      expect(screen.getAllByText('♣').length).toBeGreaterThan(0);
     });
 
     it('should display spade symbol (♠)', () => {
       render(<Card card={{ suit: 'spades', rank: 'A' }} />);
-      expect(screen.getByText('♠')).toBeInTheDocument();
+      expect(screen.getAllByText('♠').length).toBeGreaterThan(0);
     });
   });
 
@@ -192,22 +192,22 @@ describe('Card', () => {
   describe('Face Cards', () => {
     it('should render Jack correctly', () => {
       render(<Card card={{ suit: 'hearts', rank: 'J' }} />);
-      expect(screen.getByText('J')).toBeInTheDocument();
+      expect(screen.getAllByText('J').length).toBeGreaterThan(0);
     });
 
     it('should render Queen correctly', () => {
       render(<Card card={{ suit: 'hearts', rank: 'Q' }} />);
-      expect(screen.getByText('Q')).toBeInTheDocument();
+      expect(screen.getAllByText('Q').length).toBeGreaterThan(0);
     });
 
     it('should render King correctly', () => {
       render(<Card card={{ suit: 'hearts', rank: 'K' }} />);
-      expect(screen.getByText('K')).toBeInTheDocument();
+      expect(screen.getAllByText('K').length).toBeGreaterThan(0);
     });
 
     it('should render Ace correctly', () => {
       render(<Card card={{ suit: 'hearts', rank: 'A' }} />);
-      expect(screen.getByText('A')).toBeInTheDocument();
+      expect(screen.getAllByText('A').length).toBeGreaterThan(0);
     });
   });
 
@@ -216,14 +216,14 @@ describe('Card', () => {
       const numbers: CardType['rank'][] = ['2', '3', '4', '5', '6', '7', '8', '9'];
       numbers.forEach((rank) => {
         const { unmount } = render(<Card card={{ suit: 'hearts', rank }} />);
-        expect(screen.getByText(rank)).toBeInTheDocument();
+        expect(screen.getAllByText(rank).length).toBeGreaterThan(0);
         unmount();
       });
     });
 
     it('should render 10 correctly', () => {
       render(<Card card={{ suit: 'hearts', rank: '10' }} />);
-      expect(screen.getByText('10')).toBeInTheDocument();
+      expect(screen.getAllByText('10').length).toBeGreaterThan(0);
     });
   });
 
