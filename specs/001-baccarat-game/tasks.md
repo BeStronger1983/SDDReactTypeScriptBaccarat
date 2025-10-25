@@ -101,7 +101,7 @@
 ### Custom Hooks（TDD）
 
 - [X] T036 [P] [US1] **測試**: useLocalStorage hook 測試 tests/unit/useLocalStorage.test.ts
-- [ ] T037 [P] [US1] **實作**: useLocalStorage hook src/hooks/useLocalStorage.ts
+- [X] T037 [P] [US1] **實作**: useLocalStorage hook src/hooks/useLocalStorage.ts
 - [ ] T038 [P] [US1] **測試**: useBalance hook 測試 tests/unit/useBalance.test.ts - 扣款、加款、重置、歸零處理
 - [ ] T039 [P] [US1] **實作**: useBalance hook src/hooks/useBalance.ts
 - [ ] T040 [P] [US1] **測試**: useBetting hook 測試 tests/unit/useBetting.test.ts - 單區域下注、餘額驗證
