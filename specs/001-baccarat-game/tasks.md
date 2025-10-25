@@ -29,7 +29,7 @@
 
 - [X] T001 使用 Vite 建立 React + TypeScript 專案 `npm create vite@latest baccarat-game -- --template react-ts`
 - [X] T002 安裝核心相依套件：react, react-dom, framer-motion
-- [ ] T003 [P] 安裝開發工具：typescript, eslint, prettier, vitest, @testing-library/react, playwright
+- [X] T003 [P] 安裝開發工具：typescript, eslint, prettier, vitest, @testing-library/react, playwright
 - [ ] T004 [P] 配置 TypeScript (tsconfig.json) - 啟用 strict mode 及所有嚴格檢查
 - [ ] T005 [P] 配置 ESLint (.eslintrc.json) - 禁止 any 類型
 - [ ] T006 [P] 配置 Prettier (.prettierrc)
