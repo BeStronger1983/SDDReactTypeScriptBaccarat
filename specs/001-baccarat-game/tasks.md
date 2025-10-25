@@ -85,7 +85,7 @@
 - [X] T031 [P] **實作**: Button 元件 src/components/ui/Button.tsx
 - [X] T032 [P] **測試**: Card 元件測試 tests/unit/Card.test.tsx
 - [X] T033 [P] **實作**: Card 撲克牌元件 src/components/ui/Card.tsx（支援翻牌動畫）
-- [ ] T034 [P] **測試**: Chip 元件測試 tests/unit/Chip.test.tsx
+- [X] T034 [P] **測試**: Chip 元件測試 tests/unit/Chip.test.tsx
 - [ ] T035 [P] **實作**: Chip 籌碼元件 src/components/ui/Chip.tsx（支援選中狀態）
 
 **檢查點**: ✅ 基礎設施完成 - 使用者故事實作現在可以並行開始
