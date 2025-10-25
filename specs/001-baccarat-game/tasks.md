@@ -60,7 +60,7 @@
 
 - [X] T016 [P] **測試**: 洗牌演算法測試 tests/unit/shuffle.test.ts - 驗證 Fisher-Yates 正確性和均勻分布
 - [X] T017 [P] **實作**: Fisher-Yates 洗牌演算法 src/utils/shuffle.ts
-- [ ] T018 [P] **測試**: 牌面工具測試 tests/unit/cardUtils.test.ts - 驗證牌值計算、點數總和
+- [X] T018 [P] **測試**: 牌面工具測試 tests/unit/cardUtils.test.ts - 驗證牌值計算、點數總和
 - [ ] T019 [P] **實作**: 牌面工具函式 src/utils/cardUtils.ts（getCardValue, calculateScore）
 - [ ] T020 [P] **測試**: 驗證函式測試 tests/unit/validators.test.ts - 驗證下注金額、籌碼面額、餘額檢查
 - [ ] T021 [P] **實作**: 驗證函式 src/utils/validators.ts（validateBetAmount, validateBalance）
