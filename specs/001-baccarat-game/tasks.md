@@ -71,7 +71,7 @@
 - [X] T023 **實作**: 百家樂補牌規則 src/services/baccaratRules.ts（shouldPlayerDraw, shouldBankerDraw）
 - [X] T024 [P] **測試**: 賠率計算測試 tests/unit/payoutCalculator.test.ts - 三種勝負結果、多區域下注
 - [X] T025 **實作**: 賠率計算器 src/services/payoutCalculator.ts（calculatePayout, calculateTotalPayout）
-- [ ] T026 [P] **測試**: 牌靴管理測試 tests/unit/cardShoe.test.ts - 初始化、發牌、洗牌觸發
+- [X] T026 [P] **測試**: 牌靴管理測試 tests/unit/cardShoe.test.ts - 初始化、發牌、洗牌觸發
 - [ ] T027 **實作**: 牌靴管理 src/services/cardShoe.ts（createShoe, dealCard, needsShuffle）
 
 ### 資料持久化（TDD）
