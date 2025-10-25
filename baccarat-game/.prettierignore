@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Testing
+coverage/
+
+# Environment variables
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Generated files
+*.min.js
+*.min.css
+*.bundle.js
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

@@ -32,7 +32,7 @@
 - [X] T003 [P] 安裝開發工具：typescript, eslint, prettier, vitest, @testing-library/react, playwright
 - [X] T004 [P] 配置 TypeScript (tsconfig.json) - 啟用 strict mode 及所有嚴格檢查
 - [X] T005 [P] 配置 ESLint (eslint.config.js) - 禁止 any 類型
-- [ ] T006 [P] 配置 Prettier (.prettierrc)
+- [X] T006 [P] 配置 Prettier (.prettierrc)
 - [ ] T007 [P] 配置 Vitest (vitest.config.ts) - 設定覆蓋率目標 80%
 - [ ] T008 [P] 設定 Playwright (playwright.config.ts) - E2E 測試配置
 - [ ] T009 建立目錄結構：src/{components,hooks,services,types,utils,constants,styles}
