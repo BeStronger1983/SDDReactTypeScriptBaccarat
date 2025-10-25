@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Load NVM, Node, or other environment managers if they exist
+# This ensures npm/npx commands are available in the PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Navigate to baccarat-game directory
+cd baccarat-game || exit 1
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged (linting and formatting)
+echo "📝 Checking code style and formatting..."
+npm exec lint-staged || exit 1
+
+# Run type-check
+echo "🔧 Type checking..."
+npm run type-check || exit 1
+
+# Note: Unit tests are skipped in pre-commit for speed
+# Run 'npm run test:run' manually before pushing
+
+echo "✅ Pre-commit checks passed!"
