@@ -35,7 +35,7 @@
 - [X] T006 [P] 配置 Prettier (.prettierrc)
 - [X] T007 [P] 配置 Vitest (vitest.config.ts) - 設定覆蓋率目標 80%
 - [X] T008 [P] 設定 Playwright (playwright.config.ts) - E2E 測試配置
-- [ ] T009 建立目錄結構：src/{components,hooks,services,types,utils,constants,styles}
+- [X] T009 建立目錄結構：src/{components,hooks,services,types,utils,constants,styles}
 - [ ] T010 建立測試目錄結構：tests/{unit,integration,e2e}
 - [ ] T011 [P] 複製型別定義：將 specs/001-baccarat-game/contracts/types.ts 複製到 src/types/game.ts
 - [ ] T012 [P] 設定 Git hooks (husky) - pre-commit 執行 lint + type-check + test
