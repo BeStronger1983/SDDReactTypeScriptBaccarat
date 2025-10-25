@@ -77,7 +77,7 @@
 ### 資料持久化（TDD）
 
 - [X] T028 [P] **測試**: localStorage 服務測試 tests/unit/storageService.test.ts - 讀寫、驗證、錯誤處理
-- [ ] T029 **實作**: localStorage 服務 src/services/storageService.ts（loadBalance, saveBalance, loadHistory, saveHistory）
+- [X] T029 **實作**: localStorage 服務 src/services/storageService.ts（loadBalance, saveBalance, loadHistory, saveHistory）
 
 ### 基礎 UI 元件
 
