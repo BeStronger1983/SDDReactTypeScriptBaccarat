@@ -39,7 +39,7 @@
 - [X] T010 建立測試目錄結構：tests/{unit,integration,e2e}
 - [X] T011 [P] 複製型別定義：將 specs/001-baccarat-game/contracts/types.ts 複製到 src/types/game.ts
 - [X] T012 [P] 設定 Git hooks (husky) - pre-commit 執行 lint + type-check + test
-- [ ] T013 [P] 配置 package.json scripts：dev, build, test, lint, format, type-check
+- [X] T013 [P] 配置 package.json scripts：dev, build, test, lint, format, type-check
 
 **檢查點**: ✅ 專案結構完成，開發環境就緒
 
