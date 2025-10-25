@@ -246,8 +246,8 @@ describe('payoutCalculator', () => {
         const outcome: GameOutcome = 'banker';
         const result = calculatePayout(bets, outcome);
 
-        expect(result.bankerPayout).toBe(95.95); // 101 * 0.95
-        expect(result.totalPayout).toBe(95.95);
+        expect(result.bankerPayout).toBeCloseTo(95.95, 2); // 101 * 0.95
+        expect(result.totalPayout).toBeCloseTo(95.95, 2);
       });
 
       it('should handle large bet amounts', () => {
