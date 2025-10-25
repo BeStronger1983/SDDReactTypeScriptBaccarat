@@ -1,6 +1,3 @@
 // Type Definitions
-// Export type definitions here once created
-// Example:
-// export * from './game';
-// export * from './common';
-// export * from './events';
+// Export all game-related types
+export * from './game';

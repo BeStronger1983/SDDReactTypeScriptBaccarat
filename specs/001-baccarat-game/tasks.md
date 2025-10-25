@@ -37,7 +37,7 @@
 - [X] T008 [P] 設定 Playwright (playwright.config.ts) - E2E 測試配置
 - [X] T009 建立目錄結構：src/{components,hooks,services,types,utils,constants,styles}
 - [X] T010 建立測試目錄結構：tests/{unit,integration,e2e}
-- [ ] T011 [P] 複製型別定義：將 specs/001-baccarat-game/contracts/types.ts 複製到 src/types/game.ts
+- [X] T011 [P] 複製型別定義：將 specs/001-baccarat-game/contracts/types.ts 複製到 src/types/game.ts
 - [ ] T012 [P] 設定 Git hooks (husky) - pre-commit 執行 lint + type-check + test
 - [ ] T013 [P] 配置 package.json scripts：dev, build, test, lint, format, type-check
 
