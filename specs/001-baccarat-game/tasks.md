@@ -63,7 +63,7 @@
 - [X] T018 [P] **測試**: 牌面工具測試 tests/unit/cardUtils.test.ts - 驗證牌值計算、點數總和
 - [X] T019 [P] **實作**: 牌面工具函式 src/utils/cardUtils.ts（getCardValue, calculateScore）
 - [X] T020 [P] **測試**: 驗證函式測試 tests/unit/validators.test.ts - 驗證下注金額、籌碼面額、餘額檢查
-- [ ] T021 [P] **實作**: 驗證函式 src/utils/validators.ts（validateBetAmount, validateBalance）
+- [X] T021 [P] **實作**: 驗證函式 src/utils/validators.ts（validateBetAmount, validateBalance）
 
 ### 核心遊戲邏輯（TDD）
 
