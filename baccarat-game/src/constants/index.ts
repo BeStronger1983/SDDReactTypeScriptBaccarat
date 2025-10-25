@@ -1,6 +1,3 @@
 // Constants and Configuration
-// Export constants here once created
-// Example:
-// export * from './gameConfig';
-// export * from './payoutRates';
-// export * from './animations';
+// Export all game configuration and constants
+export * from './gameConfig';

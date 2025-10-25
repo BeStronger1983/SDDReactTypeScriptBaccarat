@@ -53,7 +53,7 @@
 
 ### 常數與配置
 
-- [ ] T014 [P] 定義遊戲常數 src/constants/gameConfig.ts（籌碼面額、牌靴配置、計時器設定）
+- [X] T014 [P] 定義遊戲常數 src/constants/gameConfig.ts（籌碼面額、牌靴配置、計時器設定）
 - [ ] T015 [P] 定義賠率常數 src/constants/payoutRates.ts（閒家 1:1、莊家 1:0.95、和局 1:8）
 
 ### 工具函式（TDD）
