@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Button } from '@/components/ui/Button';
+import styles from '@/components/ui/Button.module.css';
 
 describe('Button', () => {
   describe('Rendering', () => {
@@ -31,25 +32,25 @@ describe('Button', () => {
     it('should render primary variant by default', () => {
       render(<Button>Primary</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('primary');
+      expect(button.className).toContain(styles.primary);
     });
 
     it('should render secondary variant', () => {
       render(<Button variant="secondary">Secondary</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('secondary');
+      expect(button.className).toContain(styles.secondary);
     });
 
     it('should render outline variant', () => {
       render(<Button variant="outline">Outline</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('outline');
+      expect(button.className).toContain(styles.outline);
     });
 
     it('should render ghost variant', () => {
       render(<Button variant="ghost">Ghost</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('ghost');
+      expect(button.className).toContain(styles.ghost);
     });
   });
 
@@ -57,19 +58,19 @@ describe('Button', () => {
     it('should render medium size by default', () => {
       render(<Button>Medium</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('medium');
+      expect(button.className).toContain(styles.medium);
     });
 
     it('should render small size', () => {
       render(<Button size="small">Small</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('small');
+      expect(button.className).toContain(styles.small);
     });
 
     it('should render large size', () => {
       render(<Button size="large">Large</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('large');
+      expect(button.className).toContain(styles.large);
     });
   });
 
@@ -89,7 +90,7 @@ describe('Button', () => {
     it('should apply disabled class when disabled', () => {
       render(<Button disabled>Disabled</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('disabled');
+      expect(button.className).toContain(styles.disabled);
     });
 
     it('should not call onClick when disabled', () => {
@@ -135,13 +136,13 @@ describe('Button', () => {
     it('should not be full width by default', () => {
       render(<Button>Normal</Button>);
       const button = screen.getByRole('button');
-      expect(button).not.toHaveClass('full-width');
+      expect(button.className).not.toContain(styles['full-width']);
     });
 
     it('should render full width button', () => {
       render(<Button fullWidth>Full Width</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('full-width');
+      expect(button.className).toContain(styles['full-width']);
     });
   });
 
@@ -200,8 +201,8 @@ describe('Button', () => {
         </Button>
       );
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('secondary');
-      expect(button).toHaveClass('large');
+      expect(button.className).toContain(styles.secondary);
+      expect(button.className).toContain(styles.large);
     });
 
     it('should handle variant, size, and fullWidth', () => {
@@ -211,9 +212,9 @@ describe('Button', () => {
         </Button>
       );
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('outline');
-      expect(button).toHaveClass('small');
-      expect(button).toHaveClass('full-width');
+      expect(button.className).toContain(styles.outline);
+      expect(button.className).toContain(styles.small);
+      expect(button.className).toContain(styles['full-width']);
     });
 
     it('should handle custom className with variant and size', () => {
@@ -223,8 +224,8 @@ describe('Button', () => {
         </Button>
       );
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('ghost');
-      expect(button).toHaveClass('large');
+      expect(button.className).toContain(styles.ghost);
+      expect(button.className).toContain(styles.large);
       expect(button).toHaveClass('custom');
     });
   });
@@ -275,7 +276,7 @@ describe('Button', () => {
       );
       const button = screen.getByRole('button');
       expect(button).not.toBeDisabled();
-      expect(button).not.toHaveClass('full-width');
+      expect(button.className).not.toContain(styles['full-width']);
     });
   });
 

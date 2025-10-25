@@ -82,7 +82,7 @@
 ### 基礎 UI 元件
 
 - [X] T030 [P] **測試**: Button 元件測試 tests/unit/Button.test.tsx
-- [ ] T031 [P] **實作**: Button 元件 src/components/ui/Button.tsx
+- [X] T031 [P] **實作**: Button 元件 src/components/ui/Button.tsx
 - [ ] T032 [P] **測試**: Card 元件測試 tests/unit/Card.test.tsx
 - [ ] T033 [P] **實作**: Card 撲克牌元件 src/components/ui/Card.tsx（支援翻牌動畫）
 - [ ] T034 [P] **測試**: Chip 元件測試 tests/unit/Chip.test.tsx
