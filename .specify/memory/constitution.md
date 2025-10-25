@@ -1,9 +1,9 @@
 <!--
 Sync Impact Report:
-- Version change: 0.0.0 → 1.0.0
-- Initial constitution creation
-- Principles added: Code Quality Excellence, Comprehensive Testing Standards, User Experience Consistency, Performance Requirements
-- Templates requiring updates: ✅ All templates aligned with new constitution
+- Version change: 1.0.0 → 1.1.0
+- Added new principle: Documentation Language Standards
+- Modification: Added mandatory language requirement (zh-TW for specs/docs, English for constitution)
+- Templates requiring updates: ✅ All templates will enforce zh-TW for specifications and plans
 - Follow-up TODOs: None
 -->
 
@@ -72,6 +72,20 @@ Sync Impact Report:
 
 **Rationale**: Casino users expect instant responsiveness. Slow performance leads to user frustration, abandoned sessions, and lost revenue. Performance is a feature, not an afterthought.
 
+### V. Documentation Language Standards
+
+**All project documentation MUST adhere to strict language requirements:**
+
+- **Specifications**: All specification documents (`.specify/specs/*.md`) MUST be written in Traditional Chinese (zh-TW).
+- **Plans**: All planning documents (`.specify/plans/*.md`) MUST be written in Traditional Chinese (zh-TW).
+- **User-Facing Documentation**: All user manuals, help pages, and end-user documentation MUST be written in Traditional Chinese (zh-TW).
+- **Constitution Exception**: This constitution document (`.specify/memory/constitution.md`) MUST remain in English to ensure universal technical standards comprehension.
+- **Code Comments**: Technical code comments MAY be in English for international developer collaboration. JSDoc documentation MUST be in English.
+- **Commit Messages**: MUST follow Conventional Commits format in English (e.g., `feat:`, `fix:`).
+- **Pull Request Descriptions**: MUST be in English for code review purposes.
+
+**Rationale**: Traditional Chinese as the primary language for specifications and plans ensures alignment with the target market (Taiwan/Hong Kong) and reduces misunderstandings in business requirements. English constitution maintains technical precision and enables international developer onboarding.
+
 ## Security & Compliance Standards
 
 **Security and regulatory compliance are paramount:**
@@ -139,4 +153,4 @@ This constitution supersedes all other development practices and policies. All t
 - Team MUST retrospect on principle effectiveness
 - Metrics MUST be tracked to measure adherence (test coverage, performance budgets, accessibility scores)
 
-**Version**: 1.0.0 | **Ratified**: 2025-10-25 | **Last Amended**: 2025-10-25
+**Version**: 1.1.0 | **Ratified**: 2025-10-25 | **Last Amended**: 2025-10-25
