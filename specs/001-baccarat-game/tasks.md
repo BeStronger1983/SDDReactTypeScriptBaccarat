@@ -116,7 +116,7 @@
 
 ### 遊戲元件（TDD）
 
-- [ ] T046 [P] [US1] **測試**: BettingArea 元件測試 tests/unit/BettingArea.test.tsx
+- [X] T046 [P] [US1] **測試**: BettingArea 元件測試 tests/unit/BettingArea.test.tsx
 - [ ] T047 [P] [US1] **實作**: BettingArea 下注區域元件 src/components/game/BettingArea.tsx（莊/閒/和局）
 - [ ] T048 [P] [US1] **測試**: ChipSelector 元件測試 tests/unit/ChipSelector.test.tsx
 - [ ] T049 [P] [US1] **實作**: ChipSelector 籌碼選擇器 src/components/game/ChipSelector.tsx（10/50/100/500/1000）
