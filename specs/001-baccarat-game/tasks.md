@@ -143,7 +143,7 @@
 ### E2E 測試
 
 - [X] T063 [US1] **E2E 測試**: 完整遊戲流程 tests/e2e/fullGame.spec.ts - 從進入遊戲到結算完成
-- [ ] T064 [US1] **E2E 測試**: 下注功能 tests/e2e/betting.spec.ts - 單區域下注、餘額不足、計時器
+- [X] T064 [US1] **E2E 測試**: 下注功能 tests/e2e/betting.spec.ts - 單區域下注、餘額不足、計時器
 
 **檢查點**: ✅ 使用者故事 1 完成，可獨立測試並部署為 MVP
 
