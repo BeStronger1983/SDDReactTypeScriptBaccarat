@@ -7,6 +7,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   user-select: none;
   transition: transform 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 /* Sizes */
@@ -42,10 +43,12 @@
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 8px;
+  padding: 6px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .corner {
@@ -53,6 +56,7 @@
   flex-direction: column;
   align-items: center;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .cornerBottom {
@@ -62,10 +66,12 @@
 .rank {
   font-weight: bold;
   margin-bottom: 2px;
+  line-height: 1;
 }
 
 .suit {
-  font-size: 1.2em;
+  font-size: 1.1em;
+  line-height: 1;
 }
 
 .center {
@@ -73,10 +79,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .suitLarge {
-  font-size: 2.5em;
+  font-size: 2.2em;
+  line-height: 1;
 }
 
 /* Card Back */
@@ -147,26 +156,39 @@
 
 /* Responsive font sizes for small cards */
 .small .rank {
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .small .suit {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .small .suitLarge {
-  font-size: 24px;
+  font-size: 20px;
+}
+
+/* Responsive font sizes for medium cards */
+.medium .rank {
+  font-size: 14px;
+}
+
+.medium .suit {
+  font-size: 16px;
+}
+
+.medium .suitLarge {
+  font-size: 32px;
 }
 
 /* Responsive font sizes for large cards */
 .large .rank {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .large .suit {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .large .suitLarge {
-  font-size: 48px;
+  font-size: 40px;
 }
