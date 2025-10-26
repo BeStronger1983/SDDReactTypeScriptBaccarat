@@ -1,4 +1,4 @@
-import GameTable from './components/game/GameTable';
+import { GameTable } from './components/game/GameTable';
 import './App.css';
 
 function App() {
