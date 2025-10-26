@@ -176,9 +176,22 @@ export const GameTable: React.FC = () => {
           // 計算結果並更新餘額
           calculateResult(result.outcome, result.payout, bets);
 
-          // 增加贏得的金額
-          if (result.payout > 0) {
-            credit(result.payout);
+          // 返還贏的注碼（本金）+ 賠付金額
+          // 根據結果決定哪個區域贏了
+          let principalReturn = 0;
+          if (result.outcome === 'player') {
+            principalReturn = bets.player;
+          } else if (result.outcome === 'banker') {
+            principalReturn = bets.banker;
+          } else if (result.outcome === 'tie') {
+            // 和局時，閒家和莊家的注碼退回，和局贏
+            principalReturn = bets.player + bets.banker + bets.tie;
+          }
+
+          // credit 本金 + 賠付
+          const totalReturn = principalReturn + result.payout;
+          if (totalReturn > 0) {
+            credit(totalReturn);
           }
         }, 100);
       }, 2000); // 2秒發牌動畫
