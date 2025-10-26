@@ -48,6 +48,8 @@ export const GameTable: React.FC = () => {
     timer,
     lastResult,
     startDealing,
+    completeDealing,
+    completeDrawing,
     startNewRound,
     setPlayerHand,
     setBankerHand,
@@ -134,6 +136,8 @@ export const GameTable: React.FC = () => {
     if (betHistory.length === 0) return;
 
     const lastBet = betHistory[betHistory.length - 1];
+    if (!lastBet) return;
+
     // 退還金額
     credit(lastBet.amount);
     // 從下注中扣除
@@ -160,21 +164,32 @@ export const GameTable: React.FC = () => {
       setPlayerHand(result.playerHand.cards);
       setBankerHand(result.bankerHand.cards);
 
+      // 完成發牌，進入補牌階段
+      completeDealing();
+
       // 發牌動畫完成後顯示結果
       setTimeout(() => {
-        // 計算結果並更新餘額
-        calculateResult(result.outcome, result.payout, bets);
+        // 完成補牌，進入計算階段
+        completeDrawing();
 
-        // 增加贏得的金額
-        if (result.payout > 0) {
-          credit(result.payout);
-        }
+        // 稍微延遲後計算結果
+        setTimeout(() => {
+          // 計算結果並更新餘額
+          calculateResult(result.outcome, result.payout, bets);
+
+          // 增加贏得的金額
+          if (result.payout > 0) {
+            credit(result.payout);
+          }
+        }, 100);
       }, 2000); // 2秒發牌動畫
     }, 100);
   }, [
     phase,
     totalBet,
     startDealing,
+    completeDealing,
+    completeDrawing,
     shoe,
     bets,
     setPlayerHand,
@@ -226,10 +241,10 @@ export const GameTable: React.FC = () => {
       {/* 牌面顯示區域 */}
       <div className="game-section hands-section">
         <div className="hand-container">
-          <CardHand cards={playerHand.cards} score={playerHand.score} label="閒家" type="player" />
+          <CardHand hand={playerHand} label="閒家" type="player" />
         </div>
         <div className="hand-container">
-          <CardHand cards={bankerHand.cards} score={bankerHand.score} label="莊家" type="banker" />
+          <CardHand hand={bankerHand} label="莊家" type="banker" />
         </div>
       </div>
 
@@ -238,9 +253,11 @@ export const GameTable: React.FC = () => {
         <div className="game-section result-section">
           <ResultDisplay
             outcome={lastResult.outcome}
-            playerHand={lastResult.playerHand}
-            bankerHand={lastResult.bankerHand}
-            payout={lastResult.payout}
+            playerScore={lastResult.playerHand.score}
+            bankerScore={lastResult.bankerHand.score}
+            playerNatural={lastResult.playerHand.isNatural}
+            bankerNatural={lastResult.bankerHand.isNatural}
+            winAmount={lastResult.payout}
           />
         </div>
       )}
