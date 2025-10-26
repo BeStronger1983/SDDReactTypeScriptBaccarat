@@ -1,0 +1,166 @@
+/**
+ * CardHand 手牌顯示樣式
+ */
+
+.card-hand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(30, 30, 50, 0.8), rgba(20, 20, 40, 0.8));
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  min-width: 200px;
+}
+
+/* 天牌特殊樣式 */
+.card-hand.natural {
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+/* 標題區域 */
+.card-hand-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.card-hand-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.natural-indicator {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* 牌組容器 */
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: -20px;
+  min-height: 120px;
+}
+
+.card-wrapper {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-wrapper:hover {
+  transform: translateY(-8px);
+  z-index: 1;
+}
+
+/* 牌之間的重疊效果 */
+.card-wrapper:not(:first-child) {
+  margin-left: -20px;
+}
+
+/* 分數顯示 */
+.card-hand-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.3));
+  border: 3px solid rgba(59, 130, 246, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.score-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 天牌分數特殊樣式 */
+.card-hand.natural .card-hand-score {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(218, 165, 32, 0.4));
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.card-hand.natural .score-value {
+  color: #ffd700;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .card-hand {
+    padding: 12px;
+    min-width: 160px;
+  }
+
+  .card-hand-label {
+    font-size: 16px;
+  }
+
+  .cards-container {
+    min-height: 100px;
+  }
+
+  .card-wrapper:not(:first-child) {
+    margin-left: -16px;
+  }
+
+  .card-hand-score {
+    width: 50px;
+    height: 50px;
+  }
+
+  .score-value {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-hand {
+    padding: 8px;
+    min-width: 140px;
+  }
+
+  .card-hand-label {
+    font-size: 14px;
+  }
+
+  .natural-indicator {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .cards-container {
+    min-height: 80px;
+  }
+
+  .card-wrapper:not(:first-child) {
+    margin-left: -12px;
+  }
+
+  .card-hand-score {
+    width: 40px;
+    height: 40px;
+  }
+
+  .score-value {
+    font-size: 24px;
+  }
+}
