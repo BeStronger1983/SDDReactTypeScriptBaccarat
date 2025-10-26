@@ -1,0 +1,307 @@
+/**
+ * ResultDisplay 結果顯示樣式
+ */
+
+.result-display {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(30, 30, 50, 0.95), rgba(20, 20, 40, 0.95));
+  border-radius: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  min-width: 320px;
+  max-width: 500px;
+}
+
+/* 動畫效果 */
+.result-display.animate {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 關閉按鈕 */
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.close-button:active {
+  transform: scale(0.95);
+}
+
+/* 結果標題 */
+.result-header {
+  text-align: center;
+}
+
+.result-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 閒家勝利 */
+.result-display.player-win .result-title {
+  color: #3b82f6;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+.result-display.player-win {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(59, 130, 246, 0.3);
+}
+
+/* 莊家勝利 */
+.result-display.banker-win .result-title {
+  color: #ef4444;
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+.result-display.banker-win {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(239, 68, 68, 0.3);
+}
+
+/* 和局 */
+.result-display.tie .result-title {
+  color: #10b981;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+}
+
+.result-display.tie {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(16, 185, 129, 0.3);
+}
+
+/* 分數容器 */
+.scores-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+}
+
+.score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  min-width: 100px;
+  transition: all 0.3s ease;
+}
+
+.score-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.score-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 勝利者高亮 */
+.score-item.winner {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.score-item.winner .score-value {
+  color: #ffd700;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 10px rgba(255, 215, 0, 0.6);
+  }
+  50% {
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+/* 天牌標記 */
+.natural-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+/* VS 分隔符 */
+.vs-divider {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* 獲勝金額 */
+.win-amount-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(218, 165, 32, 0.1));
+  border-radius: 12px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  width: 100%;
+}
+
+.win-amount-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 215, 0, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.win-amount-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .result-display {
+    padding: 24px;
+    min-width: 280px;
+    gap: 20px;
+  }
+
+  .result-title {
+    font-size: 28px;
+  }
+
+  .scores-container {
+    gap: 16px;
+  }
+
+  .score-item {
+    padding: 12px;
+    min-width: 80px;
+  }
+
+  .score-value {
+    font-size: 40px;
+  }
+
+  .vs-divider {
+    font-size: 16px;
+  }
+
+  .win-amount-value {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-display {
+    padding: 20px;
+    min-width: 240px;
+    gap: 16px;
+  }
+
+  .result-title {
+    font-size: 24px;
+  }
+
+  .scores-container {
+    gap: 12px;
+  }
+
+  .score-item {
+    padding: 10px;
+    min-width: 70px;
+  }
+
+  .score-label {
+    font-size: 12px;
+  }
+
+  .score-value {
+    font-size: 32px;
+  }
+
+  .vs-divider {
+    font-size: 14px;
+  }
+
+  .win-amount-label {
+    font-size: 12px;
+  }
+
+  .win-amount-value {
+    font-size: 24px;
+  }
+
+  .natural-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+}

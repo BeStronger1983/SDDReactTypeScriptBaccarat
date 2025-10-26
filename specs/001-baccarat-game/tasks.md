@@ -125,7 +125,7 @@
 - [X] T052 [P] [US1] **測試**: BetTimer 元件測試 tests/unit/BetTimer.test.tsx
 - [X] T053 [P] [US1] **實作**: BetTimer 倒數計時器 src/components/game/BetTimer.tsx（15秒倒數）
 - [X] T054 [P] [US1] **測試**: ResultDisplay 元件測試 tests/unit/ResultDisplay.test.tsx
-- [ ] T055 [P] [US1] **實作**: ResultDisplay 結果顯示元件 src/components/game/ResultDisplay.tsx
+- [X] T055 [P] [US1] **實作**: ResultDisplay 結果顯示元件 src/components/game/ResultDisplay.tsx
 
 ### 版面元件
 
