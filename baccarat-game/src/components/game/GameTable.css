@@ -24,10 +24,9 @@ body {
   display: grid;
   grid-template-areas:
     'header header header'
-    'left center right'
-    'controls controls controls';
+    'left center right';
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 60px 1fr 60px;
+  grid-template-rows: 60px 1fr;
   gap: 0.5rem;
   padding: 0.5rem;
   background: linear-gradient(135deg, #0f3443 0%, #1a4d5e 100%);
@@ -64,16 +63,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  overflow: hidden;
-}
-
-/* 控制按鈕區域 */
-.controls-area {
-  grid-area: controls;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
   overflow: hidden;
 }
 
@@ -162,26 +151,14 @@ body {
   border: 2px solid rgba(255, 215, 0, 0.3);
 }
 
-/* 控制按鈕區段 */
-.controls-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
 /* 響應式設計 - 小螢幕改回垂直佈局 */
 @media (max-width: 1200px) {
   .game-table {
     grid-template-areas:
       'header'
-      'content'
-      'controls';
+      'content';
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr;
     height: auto;
     min-height: 100vh;
   }
@@ -223,15 +200,6 @@ body {
   .betting-areas {
     flex-direction: column;
     gap: 0.75rem;
-  }
-
-  .controls-section {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .controls-section button {
-    width: 100%;
   }
 }
 

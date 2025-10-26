@@ -17,7 +17,6 @@ import { BettingArea } from './BettingArea';
 import { CardHand } from './CardHand';
 import { ResultDisplay } from './ResultDisplay';
 import { BetTimer } from './BetTimer';
-import { Button } from '@/components/ui/Button';
 import { useGameState } from '@/hooks/useGameState';
 import { useBalance } from '@/hooks/useBalance';
 import { useBetting, type BetArea } from '@/hooks/useBetting';
@@ -27,17 +26,13 @@ import type { ChipValue, Shoe } from '@/types/game';
 import './GameTable.css';
 
 const INITIAL_BALANCE = 10000;
-const BET_TIME = 30; // 30 秒下注時間
-
-interface BetHistory {
-  area: BetArea;
-  amount: number;
-}
+const BET_TIME = 5; // 5 秒下注時間
+const RESULT_DISPLAY_TIME = 5; // 5 秒結果顯示時間
 
 /**
  * GameTable 遊戲桌元件
  */
-/* eslint-disable complexity, max-lines-per-function */
+/* eslint-disable max-lines-per-function */
 export const GameTable: React.FC = () => {
   // 遊戲狀態
   const {
@@ -68,9 +63,6 @@ export const GameTable: React.FC = () => {
 
   // 牌靴
   const [shoe, setShoe] = useState<Shoe>(() => createShoe());
-
-  // 下注歷史（用於撤銷）
-  const [betHistory, setBetHistory] = useState<BetHistory[]>([]);
 
   // 是否顯示總下注金額
   const showTotalBet = totalBet > 0;
@@ -110,8 +102,6 @@ export const GameTable: React.FC = () => {
       if (success) {
         // 扣除餘額（下注時立即扣除）
         debit(amount);
-        // 記錄下注歷史
-        setBetHistory((prev) => [...prev, { area, amount }]);
       }
     },
     [phase, placeBet, canAfford, debit]
@@ -122,28 +112,24 @@ export const GameTable: React.FC = () => {
     setSelectedChip(value);
   }, []);
 
-  // 處理清除下注
-  const handleClearBets = useCallback(() => {
-    // 退還下注金額
-    credit(totalBet);
+  // 處理新一輪
+  const handleNewRound = useCallback(() => {
+    startNewRound();
     clearBets();
-    setBetHistory([]);
-  }, [clearBets, credit, totalBet]);
+    setTimer(BET_TIME);
+  }, [startNewRound, clearBets, setTimer]);
 
-  // 處理撤銷
-  const handleUndo = useCallback(() => {
-    if (betHistory.length === 0) return;
+  // 結果顯示5秒後自動開始新一輪
+  useEffect(() => {
+    if (phase === 'result') {
+      const timeout = setTimeout(() => {
+        handleNewRound();
+      }, RESULT_DISPLAY_TIME * 1000);
 
-    const lastBet = betHistory[betHistory.length - 1];
-    if (!lastBet) return;
-
-    // 退還金額
-    credit(lastBet.amount);
-    // 從下注中扣除
-    placeBet(lastBet.area, -lastBet.amount);
-    // 移除歷史記錄
-    setBetHistory((prev) => prev.slice(0, -1));
-  }, [betHistory, credit, placeBet]);
+      return () => clearTimeout(timeout);
+    }
+    return undefined;
+  }, [phase, handleNewRound]);
 
   // 處理發牌
   const handleDeal = useCallback(() => {
@@ -209,14 +195,6 @@ export const GameTable: React.FC = () => {
     calculateResult,
     credit,
   ]);
-
-  // 處理新一輪
-  const handleNewRound = useCallback(() => {
-    startNewRound();
-    clearBets();
-    setBetHistory([]);
-    setTimer(BET_TIME);
-  }, [startNewRound, clearBets, setTimer]);
 
   // 是否禁用籌碼（餘額不足或不在下注階段）
   const isChipDisabled = useCallback(
@@ -310,46 +288,6 @@ export const GameTable: React.FC = () => {
             <div className="total-bet" data-testid="total-bet">
               總下注：{totalBet}
             </div>
-          )}
-        </div>
-      </div>
-
-      {/* 控制按鈕 */}
-      <div className="controls-area">
-        <div className="game-section controls-section">
-          {phase === 'betting' && (
-            <>
-              <Button
-                variant="primary"
-                onClick={handleDeal}
-                disabled={totalBet === 0}
-                aria-label="發牌"
-              >
-                發牌
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={handleClearBets}
-                disabled={totalBet === 0}
-                aria-label="清除下注"
-              >
-                清除
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={handleUndo}
-                disabled={betHistory.length === 0}
-                aria-label="撤銷"
-              >
-                撤銷
-              </Button>
-            </>
-          )}
-
-          {phase === 'result' && (
-            <Button variant="primary" onClick={handleNewRound} aria-label="開始新一輪">
-              開始新一輪
-            </Button>
           )}
         </div>
       </div>
