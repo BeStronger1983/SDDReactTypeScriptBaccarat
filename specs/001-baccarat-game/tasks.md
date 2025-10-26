@@ -122,7 +122,7 @@
 - [X] T049 [P] [US1] **實作**: ChipSelector 籌碼選擇器 src/components/game/ChipSelector.tsx（10/50/100/500/1000）
 - [X] T050 [P] [US1] **測試**: CardHand 元件測試 tests/unit/CardHand.test.tsx
 - [X] T051 [P] [US1] **實作**: CardHand 手牌顯示元件 src/components/game/CardHand.tsx
-- [ ] T052 [P] [US1] **測試**: BetTimer 元件測試 tests/unit/BetTimer.test.tsx
+- [X] T052 [P] [US1] **測試**: BetTimer 元件測試 tests/unit/BetTimer.test.tsx
 - [ ] T053 [P] [US1] **實作**: BetTimer 倒數計時器 src/components/game/BetTimer.tsx（15秒倒數）
 - [ ] T054 [P] [US1] **測試**: ResultDisplay 元件測試 tests/unit/ResultDisplay.test.tsx
 - [ ] T055 [P] [US1] **實作**: ResultDisplay 結果顯示元件 src/components/game/ResultDisplay.tsx
