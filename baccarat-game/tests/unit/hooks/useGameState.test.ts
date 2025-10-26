@@ -578,19 +578,32 @@ describe('useGameState', () => {
 
       const phases: string[] = [];
 
+      phases.push(result.current.phase);
+
       act(() => {
-        phases.push(result.current.phase);
         result.current.startDealing();
-        phases.push(result.current.phase);
-        result.current.completeDealing();
-        phases.push(result.current.phase);
-        result.current.completeDrawing();
-        phases.push(result.current.phase);
-        result.current.calculateResult('player', 100);
-        phases.push(result.current.phase);
-        result.current.startNewRound();
-        phases.push(result.current.phase);
       });
+      phases.push(result.current.phase);
+
+      act(() => {
+        result.current.completeDealing();
+      });
+      phases.push(result.current.phase);
+
+      act(() => {
+        result.current.completeDrawing();
+      });
+      phases.push(result.current.phase);
+
+      act(() => {
+        result.current.calculateResult('player', 100);
+      });
+      phases.push(result.current.phase);
+
+      act(() => {
+        result.current.startNewRound();
+      });
+      phases.push(result.current.phase);
 
       expect(phases).toEqual(['betting', 'dealing', 'drawing', 'calculating', 'result', 'betting']);
     });
@@ -628,7 +641,11 @@ describe('useGameState', () => {
         result.current.completeDealing();
         result.current.completeDrawing();
         result.current.calculateResult('banker', 50);
-        savedResult = result.current.lastResult;
+      });
+
+      savedResult = result.current.lastResult;
+
+      act(() => {
         result.current.startNewRound();
       });
 

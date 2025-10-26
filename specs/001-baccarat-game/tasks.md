@@ -107,7 +107,7 @@
 - [X] T040 [P] [US1] **測試**: useBetting hook 測試 tests/unit/useBetting.test.ts - 單區域下注、餘額驗證
 - [X] T041 [P] [US1] **實作**: useBetting hook src/hooks/useBetting.ts
 - [X] T042 [US1] **測試**: useGameState hook 測試 tests/unit/useGameState.test.ts - 遊戲狀態機、階段轉換
-- [ ] T043 [US1] **實作**: useGameState hook src/hooks/useGameState.ts（整合 useReducer）
+- [X] T043 [US1] **實作**: useGameState hook src/hooks/useGameState.ts（整合 useReducer）
 
 ### 遊戲引擎（TDD）
 
