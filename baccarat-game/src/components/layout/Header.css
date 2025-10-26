@@ -1,0 +1,194 @@
+/**
+ * Header 標題樣式
+ */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, rgba(20, 20, 40, 0.95), rgba(30, 30, 50, 0.95));
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  min-height: 60px;
+  position: relative;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* 固定定位模式 */
+.header.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* 陰影效果 */
+.header.shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 透明背景 */
+.header.transparent {
+  background: rgba(20, 20, 40, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 左側區域 */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 100px;
+}
+
+/* 中央區域 */
+.header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 2;
+}
+
+/* 右側區域 */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 100px;
+  justify-content: flex-end;
+}
+
+/* 標題文字 */
+.header-title {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 按鈕樣式 */
+.header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  user-select: none;
+}
+
+.header-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-button:active,
+.header-button.active {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-button.hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 按鈕聚焦狀態 */
+.header-button:focus-visible {
+  outline: 2px solid #ffd700;
+  outline-offset: 2px;
+}
+
+/* 響應式設計 - 平板 */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 16px;
+    min-height: 56px;
+  }
+
+  .header-title {
+    font-size: 20px;
+  }
+
+  .header-button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .header-left,
+  .header-right {
+    min-width: 80px;
+  }
+}
+
+/* 響應式設計 - 手機 */
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 12px;
+    min-height: 52px;
+  }
+
+  .header-title {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .header-button {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .header-left,
+  .header-right {
+    gap: 8px;
+    min-width: 60px;
+  }
+
+  .header-center {
+    flex: 1.5;
+  }
+}
+
+/* 動畫效果 */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header.fixed {
+  animation: slideDown 0.3s ease-out;
+}
