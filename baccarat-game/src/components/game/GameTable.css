@@ -1,79 +1,164 @@
 /**
- * GameTable 樣式
+ * GameTable 樣式 - 完全無滾動條版本
  */
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .game-table {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'left center right'
+    'controls controls controls';
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 60px 1fr 60px;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: linear-gradient(135deg, #0f3443 0%, #1a4d5e 100%);
+  overflow: hidden;
+}
+
+/* Header 區域 */
+.game-table > header {
+  grid-area: header;
+  overflow: hidden;
+}
+
+/* 左側欄位 - 籌碼和計時器 */
+.left-column {
+  grid-area: left;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #0f3443 0%, #1a4d5e 100%);
-  min-height: 100vh;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+/* 中間欄位 - 牌面和結果 */
+.center-column {
+  grid-area: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+/* 右側欄位 - 下注區域 */
+.right-column {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+/* 控制按鈕區域 */
+.controls-area {
+  grid-area: controls;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
 }
 
 /* 遊戲區段 */
 .game-section {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* 籌碼區段 */
 .chip-section {
+  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 /* 計時器區段 */
 .timer-section {
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* 手牌區段 */
+/* 手牌區段 - 改為橫向排列 */
 .hands-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .hand-container {
+  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 /* 結果區段 */
 .result-section {
   display: flex;
   justify-content: center;
-  padding: 1.5rem;
+  align-items: center;
+  padding: 0.5rem;
+  overflow: hidden;
 }
 
 /* 下注區段 */
 .betting-section {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
+  overflow: hidden;
 }
 
 .betting-areas {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
 }
 
 /* 總下注金額 */
 .total-bet {
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #ffd700;
-  padding: 0.75rem;
+  padding: 0.5rem;
   background: rgba(255, 215, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid rgba(255, 215, 0, 0.3);
 }
 
@@ -81,11 +166,49 @@
 .controls-section {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
-/* 響應式設計 */
+/* 響應式設計 - 小螢幕改回垂直佈局 */
+@media (max-width: 1200px) {
+  .game-table {
+    grid-template-areas:
+      'header'
+      'content'
+      'controls';
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .left-column,
+  .center-column,
+  .right-column {
+    display: contents;
+  }
+
+  .left-column > *,
+  .center-column > *,
+  .right-column > * {
+    grid-area: content;
+  }
+
+  .hands-section {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .betting-areas {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .game-table {
     padding: 0.75rem;
@@ -93,13 +216,12 @@
   }
 
   .hands-section {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
   }
 
   .betting-areas {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 0.75rem;
   }
 

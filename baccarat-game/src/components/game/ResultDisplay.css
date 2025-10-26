@@ -1,5 +1,5 @@
 /**
- * ResultDisplay 結果顯示樣式
+ * ResultDisplay 結果顯示樣式 - 緊湊版
  */
 
 .result-display {
@@ -7,44 +7,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 32px;
+  gap: 8px;
+  padding: 12px;
   background: linear-gradient(135deg, rgba(30, 30, 50, 0.95), rgba(20, 20, 40, 0.95));
-  border-radius: 16px;
-  border: 3px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  min-width: 320px;
-  max-width: 500px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* 動畫效果 */
 .result-display.animate {
-  animation: slideIn 0.5s ease-out;
+  animation: slideIn 0.3s ease-out;
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-30px) scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1);
   }
 }
 
 /* 關閉按鈕 */
 .close-button {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
+  top: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 50%;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 20px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
@@ -55,11 +55,6 @@
 .close-button:hover {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  transform: scale(1.1);
-}
-
-.close-button:active {
-  transform: scale(0.95);
 }
 
 /* 結果標題 */
@@ -68,7 +63,7 @@
 }
 
 .result-title {
-  font-size: 36px;
+  font-size: 20px;
   font-weight: 700;
   margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -77,47 +72,35 @@
 /* 閒家勝利 */
 .result-display.player-win .result-title {
   color: #3b82f6;
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
 }
 
 .result-display.player-win {
   border-color: rgba(59, 130, 246, 0.5);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(59, 130, 246, 0.3);
 }
 
 /* 莊家勝利 */
 .result-display.banker-win .result-title {
   color: #ef4444;
-  text-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
 }
 
 .result-display.banker-win {
   border-color: rgba(239, 68, 68, 0.5);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(239, 68, 68, 0.3);
 }
 
 /* 和局 */
 .result-display.tie .result-title {
   color: #10b981;
-  text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
 }
 
 .result-display.tie {
   border-color: rgba(16, 185, 129, 0.5);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(16, 185, 129, 0.3);
 }
 
 /* 分數容器 */
 .scores-container {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 10px;
   width: 100%;
   justify-content: center;
 }
@@ -126,75 +109,55 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 16px;
+  gap: 4px;
+  padding: 8px;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
+  border-radius: 6px;
   border: 2px solid rgba(255, 255, 255, 0.1);
-  min-width: 100px;
-  transition: all 0.3s ease;
+  min-width: 60px;
 }
 
 .score-label {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .score-value {
-  font-size: 48px;
+  font-size: 28px;
   font-weight: 700;
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  font-variant-numeric: tabular-nums;
 }
 
 /* 勝利者高亮 */
 .score-item.winner {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 215, 0, 0.8);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 .score-item.winner .score-value {
   color: #ffd700;
-  animation: pulse 1s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    text-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.8),
-      0 0 10px rgba(255, 215, 0, 0.6);
-  }
-  50% {
-    text-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.8),
-      0 0 20px rgba(255, 215, 0, 0.8);
-  }
 }
 
 /* 天牌標記 */
 .natural-badge {
-  font-size: 12px;
+  font-size: 9px;
   font-weight: 600;
   color: #ffd700;
   background: rgba(255, 215, 0, 0.2);
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 2px 4px;
+  border-radius: 3px;
   border: 1px solid rgba(255, 215, 0, 0.4);
 }
 
 /* VS 分隔符 */
 .vs-divider {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.5);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* 獲勝金額 */
@@ -202,28 +165,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 16px;
+  gap: 4px;
+  padding: 8px;
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(218, 165, 32, 0.1));
-  border-radius: 12px;
+  border-radius: 6px;
   border: 2px solid rgba(255, 215, 0, 0.3);
   width: 100%;
 }
 
 .win-amount-label {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 600;
   color: rgba(255, 215, 0, 0.9);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .win-amount-value {
-  font-size: 32px;
+  font-size: 18px;
   font-weight: 700;
   color: #ffd700;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  font-variant-numeric: tabular-nums;
 }
 
 /* 響應式設計 */

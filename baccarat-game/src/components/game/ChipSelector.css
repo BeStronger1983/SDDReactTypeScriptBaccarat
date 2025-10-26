@@ -5,15 +5,17 @@
 .chip-selector {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 16px;
+  gap: 10px;
+  padding: 10px;
   background: linear-gradient(135deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 40, 0.9));
-  border-radius: 12px;
+  border-radius: 8px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   user-select: none;
+  overflow: hidden;
 }
 
 .chip-wrapper {
@@ -21,6 +23,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .chip-wrapper.disabled {
@@ -31,19 +34,4 @@
 .chip-selector.disabled {
   opacity: 0.6;
   pointer-events: none;
-}
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-  .chip-selector {
-    gap: 8px;
-    padding: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .chip-selector {
-    gap: 6px;
-    padding: 8px;
-  }
 }

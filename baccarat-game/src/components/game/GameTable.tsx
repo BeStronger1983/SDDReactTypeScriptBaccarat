@@ -227,121 +227,131 @@ export const GameTable: React.FC = () => {
   );
 
   return (
-    <div className="game-table" data-testid="game-table">
+    <div className="game-table" data-testid="game-table" data-phase={phase}>
       {/* 標題列 */}
       <Header balance={balance} formatBalanceWithCommas title="百家樂" />
 
-      {/* 籌碼選擇器 */}
-      <div className="game-section chip-section">
-        <ChipSelector
-          selectedValue={selectedChip}
-          onSelect={handleChipSelect}
-          disabled={phase !== 'betting'}
-          isChipDisabled={isChipDisabled}
-        />
-      </div>
-
-      {/* 計時器（僅在下注階段顯示） */}
-      {phase === 'betting' && timer > 0 && (
-        <div className="game-section timer-section">
-          <BetTimer seconds={timer} onTimeUp={handleDeal} label="下注時間" showProgress />
-        </div>
-      )}
-
-      {/* 牌面顯示區域 */}
-      <div className="game-section hands-section">
-        <div className="hand-container">
-          <CardHand hand={playerHand} label="閒家" type="player" />
-        </div>
-        <div className="hand-container">
-          <CardHand hand={bankerHand} label="莊家" type="banker" />
-        </div>
-      </div>
-
-      {/* 結果顯示 */}
-      {phase === 'result' && lastResult && (
-        <div className="game-section result-section">
-          <ResultDisplay
-            outcome={lastResult.outcome}
-            playerScore={lastResult.playerHand.score}
-            bankerScore={lastResult.bankerHand.score}
-            playerNatural={lastResult.playerHand.isNatural}
-            bankerNatural={lastResult.bankerHand.isNatural}
-            winAmount={lastResult.payout}
-          />
-        </div>
-      )}
-
-      {/* 下注區域 */}
-      <div className="game-section betting-section" data-testid="betting-area">
-        <div className="betting-areas">
-          <BettingArea
-            type="player"
-            amount={bets.player}
-            onBet={(chipValue) => handleBet('player', chipValue)}
-            chipValue={selectedChip}
-            disabled={phase !== 'betting' || isChipDisabled(selectedChip)}
-          />
-          <BettingArea
-            type="banker"
-            amount={bets.banker}
-            onBet={(chipValue) => handleBet('banker', chipValue)}
-            chipValue={selectedChip}
-            disabled={phase !== 'betting' || isChipDisabled(selectedChip)}
-          />
-          <BettingArea
-            type="tie"
-            amount={bets.tie}
-            onBet={(chipValue) => handleBet('tie', chipValue)}
-            chipValue={selectedChip}
-            disabled={phase !== 'betting' || isChipDisabled(selectedChip)}
+      {/* 左側欄位 - 籌碼和計時器 */}
+      <div className="left-column">
+        {/* 籌碼選擇器 */}
+        <div className="game-section chip-section">
+          <ChipSelector
+            selectedValue={selectedChip}
+            onSelect={handleChipSelect}
+            disabled={phase !== 'betting'}
+            isChipDisabled={isChipDisabled}
           />
         </div>
 
-        {/* 總下注金額 */}
-        {showTotalBet && (
-          <div className="total-bet" data-testid="total-bet">
-            總下注：{totalBet}
+        {/* 計時器（僅在下注階段顯示） */}
+        {phase === 'betting' && timer > 0 && (
+          <div className="game-section timer-section">
+            <BetTimer seconds={timer} onTimeUp={handleDeal} label="下注時間" showProgress />
           </div>
         )}
       </div>
 
-      {/* 控制按鈕 */}
-      <div className="game-section controls-section">
-        {phase === 'betting' && (
-          <>
-            <Button
-              variant="primary"
-              onClick={handleDeal}
-              disabled={totalBet === 0}
-              aria-label="發牌"
-            >
-              發牌
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={handleClearBets}
-              disabled={totalBet === 0}
-              aria-label="清除下注"
-            >
-              清除
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={handleUndo}
-              disabled={betHistory.length === 0}
-              aria-label="撤銷"
-            >
-              撤銷
-            </Button>
-          </>
-        )}
+      {/* 中間欄位 - 牌面和結果 */}
+      <div className="center-column">
+        {/* 牌面顯示區域 */}
+        <div className="game-section hands-section">
+          <div className="hand-container">
+            <CardHand hand={playerHand} label="閒家" type="player" />
+          </div>
+          <div className="hand-container">
+            <CardHand hand={bankerHand} label="莊家" type="banker" />
+          </div>
+        </div>
 
-        {phase === 'result' && (
-          <Button variant="primary" onClick={handleNewRound} aria-label="開始新一輪">
-            開始新一輪
-          </Button>
+        {/* 結果顯示 */}
+        {phase === 'result' && lastResult && (
+          <div className="game-section result-section">
+            <ResultDisplay
+              outcome={lastResult.outcome}
+              playerScore={lastResult.playerHand.score}
+              bankerScore={lastResult.bankerHand.score}
+              playerNatural={lastResult.playerHand.isNatural}
+              bankerNatural={lastResult.bankerHand.isNatural}
+              winAmount={lastResult.payout}
+            />
+          </div>
         )}
+      </div>
+
+      {/* 右側欄位 - 下注區域 */}
+      <div className="right-column">
+        <div className="game-section betting-section" data-testid="betting-area">
+          <div className="betting-areas">
+            <BettingArea
+              type="player"
+              amount={bets.player}
+              onBet={(chipValue) => handleBet('player', chipValue)}
+              chipValue={selectedChip}
+              disabled={phase !== 'betting' || isChipDisabled(selectedChip)}
+            />
+            <BettingArea
+              type="banker"
+              amount={bets.banker}
+              onBet={(chipValue) => handleBet('banker', chipValue)}
+              chipValue={selectedChip}
+              disabled={phase !== 'betting' || isChipDisabled(selectedChip)}
+            />
+            <BettingArea
+              type="tie"
+              amount={bets.tie}
+              onBet={(chipValue) => handleBet('tie', chipValue)}
+              chipValue={selectedChip}
+              disabled={phase !== 'betting' || isChipDisabled(selectedChip)}
+            />
+          </div>
+
+          {/* 總下注金額 */}
+          {showTotalBet && (
+            <div className="total-bet" data-testid="total-bet">
+              總下注：{totalBet}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* 控制按鈕 */}
+      <div className="controls-area">
+        <div className="game-section controls-section">
+          {phase === 'betting' && (
+            <>
+              <Button
+                variant="primary"
+                onClick={handleDeal}
+                disabled={totalBet === 0}
+                aria-label="發牌"
+              >
+                發牌
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={handleClearBets}
+                disabled={totalBet === 0}
+                aria-label="清除下注"
+              >
+                清除
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={handleUndo}
+                disabled={betHistory.length === 0}
+                aria-label="撤銷"
+              >
+                撤銷
+              </Button>
+            </>
+          )}
+
+          {phase === 'result' && (
+            <Button variant="primary" onClick={handleNewRound} aria-label="開始新一輪">
+              開始新一輪
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
