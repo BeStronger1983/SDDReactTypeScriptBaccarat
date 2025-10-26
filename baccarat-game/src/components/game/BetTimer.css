@@ -1,0 +1,186 @@
+/**
+ * BetTimer 倒數計時器樣式
+ */
+
+.bet-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 40, 0.9));
+  border-radius: 12px;
+  border: 2px solid rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  min-width: 120px;
+  transition: all 0.3s ease;
+}
+
+/* 標籤 */
+.timer-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 時間顯示 */
+.timer-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  font-variant-numeric: tabular-nums;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* 進度條容器 */
+.timer-progress-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.timer-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8));
+  border-radius: 3px;
+  transition: width 1s linear;
+}
+
+/* 警告狀態（< 5秒） */
+.bet-timer.warning {
+  border-color: rgba(245, 158, 11, 0.8);
+  animation: pulse-warning 1s ease-in-out infinite;
+}
+
+.bet-timer.warning .timer-value {
+  color: #f59e0b;
+}
+
+.bet-timer.warning .timer-progress-bar {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.8), rgba(217, 119, 6, 0.8));
+}
+
+@keyframes pulse-warning {
+  0%,
+  100% {
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 0 20px 5px rgba(245, 158, 11, 0.6);
+  }
+}
+
+/* 危險狀態（< 3秒） */
+.bet-timer.danger {
+  border-color: rgba(239, 68, 68, 0.8);
+  animation: pulse-danger 0.5s ease-in-out infinite;
+}
+
+.bet-timer.danger .timer-value {
+  color: #ef4444;
+}
+
+.bet-timer.danger .timer-progress-bar {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.8), rgba(220, 38, 38, 0.8));
+}
+
+@keyframes pulse-danger {
+  0%,
+  100% {
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 0 0 0 rgba(239, 68, 68, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 0 30px 10px rgba(239, 68, 68, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+/* 過期狀態（= 0秒） */
+.bet-timer.expired {
+  border-color: rgba(156, 163, 175, 0.5);
+  opacity: 0.6;
+}
+
+.bet-timer.expired .timer-value {
+  color: #9ca3af;
+}
+
+.bet-timer.expired .timer-progress-bar {
+  background: rgba(156, 163, 175, 0.3);
+}
+
+/* 暫停狀態 */
+.bet-timer.paused {
+  border-color: rgba(156, 163, 175, 0.5);
+  opacity: 0.7;
+}
+
+.bet-timer.paused .timer-value {
+  color: #9ca3af;
+}
+
+.bet-timer.paused .timer-progress-bar {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .bet-timer {
+    padding: 12px;
+    min-width: 100px;
+  }
+
+  .timer-label {
+    font-size: 12px;
+  }
+
+  .timer-value {
+    font-size: 40px;
+    min-width: 60px;
+  }
+
+  .timer-progress-container {
+    height: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bet-timer {
+    padding: 8px;
+    min-width: 80px;
+  }
+
+  .timer-label {
+    font-size: 10px;
+  }
+
+  .timer-value {
+    font-size: 32px;
+    min-width: 50px;
+  }
+
+  .timer-progress-container {
+    height: 4px;
+  }
+}
