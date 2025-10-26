@@ -111,7 +111,7 @@
 
 ### 遊戲引擎（TDD）
 
-- [ ] T044 [US1] **測試**: 遊戲引擎測試 tests/unit/gameEngine.test.ts - 完整遊戲流程、勝負判定
+- [X] T044 [US1] **測試**: 遊戲引擎測試 tests/unit/gameEngine.test.ts - 完整遊戲流程、勝負判定
 - [ ] T045 [US1] **實作**: 遊戲引擎 src/services/gameEngine.ts（executeGameRound, determineOutcome）
 
 ### 遊戲元件（TDD）
