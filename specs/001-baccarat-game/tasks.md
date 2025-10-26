@@ -137,7 +137,7 @@
 ### 主遊戲元件
 
 - [X] T060 [US1] **測試**: GameTable 元件測試 tests/integration/GameTable.test.tsx - 完整遊戲流程整合測試
-- [ ] T061 [US1] **實作**: GameTable 主遊戲桌面 src/components/game/GameTable.tsx（整合所有子元件）
+- [X] T061 [US1] **實作**: GameTable 主遊戲桌面 src/components/game/GameTable.tsx（整合所有子元件）
 - [ ] T062 [US1] **實作**: App 主元件 src/App.tsx（載入 GameTable）
 
 ### E2E 測試

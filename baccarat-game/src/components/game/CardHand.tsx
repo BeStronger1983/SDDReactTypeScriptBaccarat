@@ -12,9 +12,15 @@ import './CardHand.css';
 
 export interface CardHandProps {
   /** 手牌資料 */
-  hand: Hand;
+  hand?: Hand;
+  /** 個別傳入牌組（如果沒有完整的 hand 物件） */
+  cards?: CardType[];
+  /** 個別傳入分數（如果沒有完整的 hand 物件） */
+  score?: number;
   /** 標籤（閒家/莊家） */
   label: string;
+  /** 手牌類型（用於 test ID） */
+  type?: 'player' | 'banker';
   /** 是否顯示分數 */
   showScore?: boolean;
   /** 是否牌面朝下 */
@@ -115,32 +121,31 @@ const ScoreDisplay: React.FC<{ score: number }> = ({ score }) => (
  * />
  * ```
  */
+/* eslint-disable complexity */
 export const CardHand: React.FC<CardHandProps> = ({
   hand,
+  cards: cardsProp,
+  score: scoreProp,
   label,
-  showScore = false,
+  type,
+  showScore = true,
   faceDown = false,
   className = '',
 }) => {
-  // 處理未提供 hand 的情況
-  if (!hand) {
-    return null;
-  }
+  // 支援兩種方式傳入資料：完整 hand 物件或個別屬性
+  const cards = hand?.cards ?? cardsProp ?? [];
+  const score = hand?.score ?? scoreProp ?? 0;
+  const isNatural = hand?.isNatural ?? false;
 
-  const { cards = [], score = 0, isNatural = false } = hand;
   const displayScore = Math.max(0, Math.min(9, score));
   const containerClassName = ['card-hand', isNatural && 'natural', className]
     .filter(Boolean)
     .join(' ');
   const ariaLabel = generateAriaLabel(label, cards.length, displayScore, isNatural, showScore);
+  const testId = type ? `${type}-hand` : 'card-hand';
 
   return (
-    <div
-      data-testid="card-hand"
-      className={containerClassName}
-      role="region"
-      aria-label={ariaLabel}
-    >
+    <div data-testid={testId} className={containerClassName} role="region" aria-label={ariaLabel}>
       <HandHeader label={label} showScore={showScore} isNatural={isNatural} />
       <CardsContainer cards={cards} faceDown={faceDown} />
       {showScore && <ScoreDisplay score={displayScore} />}

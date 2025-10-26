@@ -1,0 +1,143 @@
+/**
+ * GameTable 樣式
+ */
+
+.game-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #0f3443 0%, #1a4d5e 100%);
+  min-height: 100vh;
+}
+
+/* 遊戲區段 */
+.game-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* 籌碼區段 */
+.chip-section {
+  display: flex;
+  justify-content: center;
+}
+
+/* 計時器區段 */
+.timer-section {
+  display: flex;
+  justify-content: center;
+}
+
+/* 手牌區段 */
+.hands-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.hand-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* 結果區段 */
+.result-section {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* 下注區段 */
+.betting-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.betting-areas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* 總下注金額 */
+.total-bet {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffd700;
+  padding: 0.75rem;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 8px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+/* 控制按鈕區段 */
+.controls-section {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .game-table {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .hands-section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .betting-areas {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .controls-section {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .controls-section button {
+    width: 100%;
+  }
+}
+
+/* 動畫 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-section {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 遊戲階段樣式 */
+.game-table[data-phase='betting'] .betting-areas {
+  pointer-events: auto;
+}
+
+.game-table[data-phase='dealing'] .betting-areas,
+.game-table[data-phase='drawing'] .betting-areas,
+.game-table[data-phase='calculating'] .betting-areas,
+.game-table[data-phase='result'] .betting-areas {
+  pointer-events: none;
+  opacity: 0.6;
+}

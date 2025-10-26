@@ -19,6 +19,8 @@ export interface ChipSelectorProps {
   disabled?: boolean;
   /** 自訂樣式類別 */
   className?: string;
+  /** 檢查特定籌碼是否應該被禁用的函數 */
+  isChipDisabled?: (value: ChipValue) => boolean;
 }
 
 /**
@@ -39,10 +41,12 @@ export const ChipSelector: React.FC<ChipSelectorProps> = ({
   onSelect,
   disabled = false,
   className = '',
+  isChipDisabled,
 }) => {
   // 處理籌碼點擊
   const handleChipClick = (value: ChipValue): void => {
-    if (!disabled && onSelect) {
+    const chipDisabled = isChipDisabled ? isChipDisabled(value) : disabled;
+    if (!chipDisabled && onSelect) {
       onSelect(value);
     }
   };
@@ -51,7 +55,8 @@ export const ChipSelector: React.FC<ChipSelectorProps> = ({
   const handleKeyDown =
     (value: ChipValue) =>
     (e: React.KeyboardEvent<HTMLDivElement>): void => {
-      if (disabled) return;
+      const chipDisabled = isChipDisabled ? isChipDisabled(value) : disabled;
+      if (chipDisabled) return;
 
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -74,10 +79,11 @@ export const ChipSelector: React.FC<ChipSelectorProps> = ({
     >
       {CHIP_VALUES.map((value) => {
         const isSelected = selectedValue === value;
+        const chipDisabled = isChipDisabled ? isChipDisabled(value) : disabled;
         const chipWrapperClassName = [
           'chip-wrapper',
           isSelected && 'selected',
-          disabled && 'disabled',
+          chipDisabled && 'disabled',
         ]
           .filter(Boolean)
           .join(' ');
@@ -89,14 +95,14 @@ export const ChipSelector: React.FC<ChipSelectorProps> = ({
             className={chipWrapperClassName}
             onClick={() => handleChipClick(value)}
             onKeyDown={handleKeyDown(value)}
-            role="button"
-            tabIndex={disabled ? -1 : 0}
+            tabIndex={chipDisabled ? -1 : 0}
             aria-label={`${value} 元籌碼${isSelected ? '，已選中' : ''}`}
+            aria-disabled={chipDisabled}
           >
             <Chip
               value={value}
               selected={isSelected}
-              disabled={disabled}
+              disabled={chipDisabled}
               onClick={handleChipClick}
             />
           </div>

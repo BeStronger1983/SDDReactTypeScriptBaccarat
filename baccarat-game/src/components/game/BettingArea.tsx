@@ -110,9 +110,11 @@ export const BettingArea: React.FC<BettingAreaProps> = ({
         <span className="betting-area-payout">{payoutRate}</span>
       </div>
 
-      <div className="betting-area-amount">
-        <span className="amount-value">{displayAmount}</span>
-      </div>
+      {amount > 0 && (
+        <div className="betting-area-amount" data-testid={`bet-amount-${type}`}>
+          <span className="amount-value">{displayAmount}</span>
+        </div>
+      )}
 
       {amount > 0 && (
         <div className="betting-area-indicator" aria-hidden="true">
