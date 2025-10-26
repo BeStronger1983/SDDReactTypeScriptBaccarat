@@ -130,7 +130,7 @@
 ### 版面元件
 
 - [X] T056 [P] [US1] **測試**: BalanceDisplay 元件測試 tests/unit/BalanceDisplay.test.tsx
-- [ ] T057 [P] [US1] **實作**: BalanceDisplay 餘額顯示元件 src/components/layout/BalanceDisplay.tsx
+- [X] T057 [P] [US1] **實作**: BalanceDisplay 餘額顯示元件 src/components/layout/BalanceDisplay.tsx
 - [ ] T058 [P] [US1] **測試**: Header 元件測試 tests/unit/Header.test.tsx
 - [ ] T059 [P] [US1] **實作**: Header 標題元件 src/components/layout/Header.tsx
 
