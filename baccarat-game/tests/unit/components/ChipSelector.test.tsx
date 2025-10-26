@@ -17,7 +17,9 @@ describe('ChipSelector', () => {
     it('應該渲染 5 個籌碼', () => {
       const { container } = render(<ChipSelector selectedValue={100} onSelect={vi.fn()} />);
 
-      const chips = container.querySelectorAll('[data-testid^="chip-"]');
+      const chips = container.querySelectorAll(
+        '[data-testid^="chip-"]:not([data-testid="chip-selector"])'
+      );
       expect(chips).toHaveLength(5);
     });
 
@@ -283,7 +285,9 @@ describe('ChipSelector', () => {
     it('應該按照金額由小到大排列', () => {
       const { container } = render(<ChipSelector selectedValue={100} onSelect={vi.fn()} />);
 
-      const chips = Array.from(container.querySelectorAll('[data-testid^="chip-"]'));
+      const chips = Array.from(
+        container.querySelectorAll('[data-testid^="chip-"]:not([data-testid="chip-selector"])')
+      );
       const values = chips.map((chip) => {
         const match = chip.getAttribute('data-testid')?.match(/chip-(\d+)/);
         return match ? parseInt(match[1]) : 0;
