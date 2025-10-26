@@ -90,8 +90,9 @@ describe('gameEngine', () => {
 
       const result = executeGameRound(shoe, bets);
 
-      expect(result.playerHand.cards.length).toBe(2);
-      expect(result.bankerHand.cards.length).toBe(2);
+      // Both hands should have at least 2 cards (may have 3 if third card was drawn)
+      expect(result.playerHand.cards.length).toBeGreaterThanOrEqual(2);
+      expect(result.bankerHand.cards.length).toBeGreaterThanOrEqual(2);
       expect(result.shoe.dealtCount).toBeGreaterThanOrEqual(4);
     });
 
