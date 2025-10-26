@@ -231,7 +231,7 @@ export const GameTable: React.FC = () => {
       {/* 計時器（僅在下注階段顯示） */}
       {phase === 'betting' && timer > 0 && (
         <div className="game-section timer-section">
-          <BetTimer timeLeft={timer} />
+          <BetTimer seconds={timer} onTimeUp={handleDeal} label="下注時間" showProgress />
         </div>
       )}
 
