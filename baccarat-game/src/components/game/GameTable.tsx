@@ -85,13 +85,13 @@ export const GameTable: React.FC = () => {
     return () => clearInterval(interval);
   }, [phase, timer, decrementTimer]);
 
-  // 計時器歸零自動發牌
+  // 計時器歸零自動發牌（無論是否下注）
   useEffect(() => {
-    if (phase === 'betting' && timer === 0 && totalBet > 0) {
+    if (phase === 'betting' && timer === 0) {
       handleDeal();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, timer, totalBet]);
+  }, [phase, timer]);
 
   // 處理下注
   const handleBet = useCallback(
@@ -133,7 +133,7 @@ export const GameTable: React.FC = () => {
 
   // 處理發牌
   const handleDeal = useCallback(() => {
-    if (phase !== 'betting' || totalBet === 0) return;
+    if (phase !== 'betting') return;
 
     // 開始發牌
     startDealing();

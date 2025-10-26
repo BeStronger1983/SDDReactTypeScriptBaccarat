@@ -87,6 +87,7 @@ body {
 
 /* 計時器區段 */
 .timer-section {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,6 +116,7 @@ body {
 
 /* 結果區段 */
 .result-section {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
