@@ -1,0 +1,187 @@
+/**
+ * BettingArea 下注區域樣式
+ */
+
+.betting-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 120px;
+  min-height: 140px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, rgba(40, 40, 60, 0.9), rgba(20, 20, 40, 0.9));
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+
+.betting-area:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.betting-area:active:not(.disabled) {
+  transform: translateY(0);
+}
+
+.betting-area:focus {
+  outline: 2px solid #4a9eff;
+  outline-offset: 2px;
+}
+
+/* 區域類型專屬顏色 */
+.betting-area.player {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2));
+}
+
+.betting-area.player:hover:not(.disabled) {
+  border-color: rgba(59, 130, 246, 0.8);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.3));
+}
+
+.betting-area.banker {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.2));
+}
+
+.betting-area.banker:hover:not(.disabled) {
+  border-color: rgba(239, 68, 68, 0.8);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(220, 38, 38, 0.3));
+}
+
+.betting-area.tie {
+  border-color: rgba(34, 197, 94, 0.5);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.2));
+}
+
+.betting-area.tie:hover:not(.disabled) {
+  border-color: rgba(34, 197, 94, 0.8);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(22, 163, 74, 0.3));
+}
+
+/* 有下注時的樣式 */
+.betting-area.has-bet {
+  border-width: 3px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.betting-area.has-bet.player {
+  border-color: rgba(59, 130, 246, 1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.betting-area.has-bet.banker {
+  border-color: rgba(239, 68, 68, 1);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.betting-area.has-bet.tie {
+  border-color: rgba(34, 197, 94, 1);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+/* 禁用狀態 */
+.betting-area.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 標題區域 */
+.betting-area-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.betting-area-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.betting-area-payout {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* 金額顯示 */
+.betting-area-amount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 60px;
+}
+
+.amount-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 下注指示器 */
+.betting-area-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .betting-area {
+    min-width: 100px;
+    min-height: 120px;
+    padding: 12px;
+  }
+
+  .betting-area-label {
+    font-size: 14px;
+  }
+
+  .betting-area-payout {
+    font-size: 11px;
+  }
+
+  .amount-value {
+    font-size: 24px;
+  }
+}
