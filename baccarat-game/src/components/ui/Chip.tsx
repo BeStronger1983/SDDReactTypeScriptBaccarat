@@ -16,11 +16,11 @@ export interface ChipProps {
 }
 
 const getChipColorClass = (value: number): string => {
-  if (value >= 1000) return styles['chip-1000'];
-  if (value >= 500) return styles['chip-500'];
-  if (value >= 100) return styles['chip-100'];
-  if (value >= 50) return styles['chip-50'];
-  return styles['chip-10'];
+  if (value >= 1000) return styles['chip-1000'] ?? '';
+  if (value >= 500) return styles['chip-500'] ?? '';
+  if (value >= 100) return styles['chip-100'] ?? '';
+  if (value >= 50) return styles['chip-50'] ?? '';
+  return styles['chip-10'] ?? '';
 };
 
 /**
@@ -53,13 +53,13 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
     const displayLabel = label ?? String(value);
     const chipColorClass = getChipColorClass(value);
 
-    const handleClick = () => {
+    const handleClick = (): void => {
       if (!disabled && onClick) {
         onClick(value);
       }
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>): void => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         handleClick();

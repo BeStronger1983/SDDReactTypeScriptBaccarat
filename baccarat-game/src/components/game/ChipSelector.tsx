@@ -44,10 +44,11 @@ export const ChipSelector: React.FC<ChipSelectorProps> = ({
   isChipDisabled,
 }) => {
   // 處理籌碼點擊
-  const handleChipClick = (value: ChipValue): void => {
-    const chipDisabled = isChipDisabled ? isChipDisabled(value) : disabled;
+  const handleChipClick = (value: number): void => {
+    const chipValue = value as ChipValue;
+    const chipDisabled = isChipDisabled ? isChipDisabled(chipValue) : disabled;
     if (!chipDisabled && onSelect) {
-      onSelect(value);
+      onSelect(chipValue);
     }
   };
 

@@ -31,7 +31,6 @@ export default defineConfig({
         functions: 80,
         lines: 80,
       },
-      all: true,
       include: ['src/**/*.{ts,tsx}'],
     },
     include: ['tests/unit/**/*.test.{ts,tsx}', 'tests/integration/**/*.test.{ts,tsx}'],

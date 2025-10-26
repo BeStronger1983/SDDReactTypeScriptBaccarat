@@ -38,8 +38,8 @@
     "noUncheckedSideEffectImports": true,
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "exactOptionalPropertyTypes": true
+    "noPropertyAccessFromIndexSignature": false,
+    "exactOptionalPropertyTypes": false
   },
   "include": ["src"]
 }

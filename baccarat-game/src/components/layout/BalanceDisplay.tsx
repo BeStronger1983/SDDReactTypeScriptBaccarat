@@ -67,7 +67,7 @@ const formatBalance = (
   const [integerPart, decimalPart] = fixed.split('.');
 
   // 為整數部分添加千分位符號
-  const withCommas = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const withCommas = (integerPart ?? '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   // 重新組合
   return decimalPart !== undefined ? `${withCommas}.${decimalPart}` : withCommas;
@@ -145,7 +145,7 @@ export const BalanceDisplay: React.FC<BalanceDisplayProps> = ({
 
   // 處理餘額變化動畫
   useEffect(() => {
-    if (!animate) return;
+    if (!animate) return undefined;
 
     const prevBalance = prevBalanceRef.current;
     const currentBalance = sanitizeBalance(balance);
@@ -162,6 +162,7 @@ export const BalanceDisplay: React.FC<BalanceDisplayProps> = ({
     }
 
     prevBalanceRef.current = balance;
+    return undefined;
   }, [balance, animate]);
 
   const sanitized = sanitizeBalance(balance);

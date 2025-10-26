@@ -24,7 +24,9 @@ export function shuffle<T>(array: readonly T[]): T[] {
     const j = Math.floor(Math.random() * (i + 1));
 
     // Swap elements at positions i and j
-    [result[i], result[j]] = [result[j], result[i]];
+    const temp = result[i];
+    result[i] = result[j] as T;
+    result[j] = temp as T;
   }
 
   return result;
