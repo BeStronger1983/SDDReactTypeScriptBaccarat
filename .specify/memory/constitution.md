@@ -1,10 +1,11 @@
 <!--
 Sync Impact Report:
-- Version change: 1.0.0 → 1.1.0
-- Added new principle: Documentation Language Standards
-- Modification: Added mandatory language requirement (zh-TW for specs/docs, English for constitution)
-- Templates requiring updates: ✅ All templates will enforce zh-TW for specifications and plans
-- Follow-up TODOs: None
+- Version change: 1.1.0 → 1.2.0
+- Modified principle: Documentation Language Standards - Code Comments
+- Previous: Code comments MAY be in English, JSDoc MUST be in English
+- Updated: All code comments (including JSDoc) MUST be in Traditional Chinese (zh-TW)
+- Templates requiring updates: ✅ Code generation templates will enforce zh-TW comments
+- Follow-up TODOs: Update existing codebase comments to zh-TW (gradual migration)
 -->
 
 # React Live Casino Constitution
@@ -80,11 +81,11 @@ Sync Impact Report:
 - **Plans**: All planning documents (`.specify/plans/*.md`) MUST be written in Traditional Chinese (zh-TW).
 - **User-Facing Documentation**: All user manuals, help pages, and end-user documentation MUST be written in Traditional Chinese (zh-TW).
 - **Constitution Exception**: This constitution document (`.specify/memory/constitution.md`) MUST remain in English to ensure universal technical standards comprehension.
-- **Code Comments**: Technical code comments MAY be in English for international developer collaboration. JSDoc documentation MUST be in English.
+- **Code Comments**: All code comments (including JSDoc documentation) MUST be written in Traditional Chinese (zh-TW) to ensure clarity for the primary development team.
 - **Commit Messages**: MUST follow Conventional Commits format in English (e.g., `feat:`, `fix:`).
 - **Pull Request Descriptions**: MUST be in English for code review purposes.
 
-**Rationale**: Traditional Chinese as the primary language for specifications and plans ensures alignment with the target market (Taiwan/Hong Kong) and reduces misunderstandings in business requirements. English constitution maintains technical precision and enables international developer onboarding.
+**Rationale**: Traditional Chinese as the primary language for specifications, plans, and code comments ensures alignment with the target market (Taiwan/Hong Kong) and reduces misunderstandings in business requirements and technical implementation. English constitution maintains technical precision and enables international developer onboarding. English commit messages and PR descriptions maintain compatibility with standard development tools.
 
 ## Security & Compliance Standards
 
@@ -153,4 +154,4 @@ This constitution supersedes all other development practices and policies. All t
 - Team MUST retrospect on principle effectiveness
 - Metrics MUST be tracked to measure adherence (test coverage, performance budgets, accessibility scores)
 
-**Version**: 1.1.0 | **Ratified**: 2025-10-25 | **Last Amended**: 2025-10-25
+**Version**: 1.2.0 | **Ratified**: 2025-10-25 | **Last Amended**: 2025-10-26
