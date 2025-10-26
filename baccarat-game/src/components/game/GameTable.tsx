@@ -12,7 +12,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Header } from '@/components/layout/Header';
-import { BalanceDisplay } from '@/components/layout/BalanceDisplay';
 import { ChipSelector } from './ChipSelector';
 import { BettingArea } from './BettingArea';
 import { CardHand } from './CardHand';
@@ -217,9 +216,7 @@ export const GameTable: React.FC = () => {
   return (
     <div className="game-table" data-testid="game-table">
       {/* 標題列 */}
-      <Header>
-        <BalanceDisplay balance={balance} formatWithCommas />
-      </Header>
+      <Header balance={balance} formatBalanceWithCommas title="百家樂" />
 
       {/* 籌碼選擇器 */}
       <div className="game-section chip-section">

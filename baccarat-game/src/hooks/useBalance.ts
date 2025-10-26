@@ -1,5 +1,6 @@
 import { useCallback, useRef, useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
+import { STORAGE_KEYS } from '@/services/storageService';
 
 /**
  * Return type for useBalance hook
@@ -39,7 +40,7 @@ export function useBalance(initialBalance = 1000): UseBalanceReturn {
   const balanceRef = useRef(initialBalance);
 
   // Use localStorage for persistence
-  const [balance, setBalance] = useLocalStorage('balance', initialBalance);
+  const [balance, setBalance] = useLocalStorage(STORAGE_KEYS.BALANCE, initialBalance);
 
   // Keep balanceRef in sync with balance state
   useEffect(() => {

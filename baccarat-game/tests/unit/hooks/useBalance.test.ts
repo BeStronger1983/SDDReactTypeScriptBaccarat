@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useBalance } from '@/hooks/useBalance';
+import { STORAGE_KEYS } from '@/services/storageService';
 
 describe('useBalance', () => {
   beforeEach(() => {
@@ -20,7 +21,7 @@ describe('useBalance', () => {
     });
 
     it('should load balance from localStorage if exists', () => {
-      localStorage.setItem('balance', JSON.stringify(2500));
+      localStorage.setItem(STORAGE_KEYS.BALANCE, JSON.stringify(2500));
       const { result } = renderHook(() => useBalance());
       expect(result.current.balance).toBe(2500);
     });
@@ -113,7 +114,7 @@ describe('useBalance', () => {
         result.current.debit(100);
       });
 
-      expect(localStorage.getItem('balance')).toBe(JSON.stringify(900));
+      expect(localStorage.getItem(STORAGE_KEYS.BALANCE)).toBe(JSON.stringify(900));
     });
   });
 
@@ -167,7 +168,7 @@ describe('useBalance', () => {
         result.current.credit(500);
       });
 
-      expect(localStorage.getItem('balance')).toBe(JSON.stringify(1500));
+      expect(localStorage.getItem(STORAGE_KEYS.BALANCE)).toBe(JSON.stringify(1500));
     });
 
     it('should handle large amounts', () => {
@@ -234,7 +235,7 @@ describe('useBalance', () => {
         result.current.reset();
       });
 
-      expect(localStorage.getItem('balance')).toBe(JSON.stringify(1000));
+      expect(localStorage.getItem(STORAGE_KEYS.BALANCE)).toBe(JSON.stringify(1000));
     });
   });
 
@@ -276,7 +277,7 @@ describe('useBalance', () => {
         result.current.setBalance(3000);
       });
 
-      expect(localStorage.getItem('balance')).toBe(JSON.stringify(3000));
+      expect(localStorage.getItem(STORAGE_KEYS.BALANCE)).toBe(JSON.stringify(3000));
     });
   });
 
@@ -448,7 +449,7 @@ describe('useBalance', () => {
         result.current.credit(500);
       });
 
-      const storedBalance = JSON.parse(localStorage.getItem('balance') || '0');
+      const storedBalance = JSON.parse(localStorage.getItem(STORAGE_KEYS.BALANCE) || '0');
       expect(storedBalance).toBe(1500);
     });
   });
