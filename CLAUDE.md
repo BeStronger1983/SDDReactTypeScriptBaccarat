@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Claude Code Preferences
+
+**IMPORTANT:** Always respond in Traditional Chinese (Taiwan) / 繁體中文(台灣) / zh-TW.
+
 ## Project Overview
 
 This is a monorepo containing a Baccarat (百家樂) casino game implementation. The main application is in the `baccarat-game/` directory and is built as a client-side React + TypeScript + Vite application with no backend or network connectivity.
