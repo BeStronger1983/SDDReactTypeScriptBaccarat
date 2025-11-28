@@ -1,1 +1,4 @@
 # Git hooks (should be committed)
+
+# Claude Code local settings
+.claude/settings.local.json
